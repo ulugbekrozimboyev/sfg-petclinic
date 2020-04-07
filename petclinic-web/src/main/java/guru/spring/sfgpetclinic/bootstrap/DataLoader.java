@@ -1,7 +1,5 @@
 package guru.spring.sfgpetclinic.bootstrap;
 
-import guru.spring.sfgpetclinic.maps.OwnerServiceMap;
-import guru.spring.sfgpetclinic.maps.VetServiceMap;
 import guru.spring.sfgpetclinic.models.Owner;
 import guru.spring.sfgpetclinic.models.Vet;
 import guru.spring.sfgpetclinic.services.OwnerService;
@@ -15,9 +13,9 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader(){
-        this.ownerService = new OwnerServiceMap();
-        this.vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService){
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
@@ -37,6 +35,8 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
+        System.out.println("Owner pul on map");
+
         Vet vet1 = new Vet();
         vet1.setId(1L);
         vet1.setFirstName("Sherali");
@@ -50,5 +50,7 @@ public class DataLoader implements CommandLineRunner {
         vet2.setLastName("Jo'raliev");
 
         vetService.save(vet2);
+
+        System.out.println("Vet pul on map");
     }
 }
