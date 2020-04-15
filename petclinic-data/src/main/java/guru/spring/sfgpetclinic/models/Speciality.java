@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "specialities")
-public class Speciality {
+public class Speciality extends BaseEntity {
 
     @Column(name = "description")
     private String description;
