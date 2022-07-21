@@ -5,25 +5,25 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class AbstractMapServiec<T, ID> {
+public abstract class AbstractMapServiec<T, K> {
 
-    protected Map<ID, T> map = new HashMap<>();
+    protected Map<K, T> map = new HashMap<>();
 
     Set<T> findAll(){
         return new HashSet<T>(map.values());
     }
 
-    T findById(ID id){
+    T findById(K id){
         return map.get(id);
     }
 
-    T save(ID id, T object){
+    T save(K id, T object){
         map.put(id, object);
 
         return object;
     }
 
-    void deleteById(ID id){
+    void deleteById(K id){
         map.remove(id);
     }
 

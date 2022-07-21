@@ -4,10 +4,12 @@ import guru.spring.sfgpetclinic.models.Owner;
 import guru.spring.sfgpetclinic.models.Vet;
 import guru.spring.sfgpetclinic.services.OwnerService;
 import guru.spring.sfgpetclinic.services.VetService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
@@ -19,7 +21,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Owner owner1 = new Owner();
         owner1.setId(1L);
@@ -35,7 +37,7 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
-        System.out.println("Owner pul on map");
+        log.info("Owner pul on map");
 
         Vet vet1 = new Vet();
         vet1.setId(1L);
@@ -51,6 +53,6 @@ public class DataLoader implements CommandLineRunner {
 
         vetService.save(vet2);
 
-        System.out.println("Vet pul on map");
+        log.info("Vet pul on map");
     }
 }
