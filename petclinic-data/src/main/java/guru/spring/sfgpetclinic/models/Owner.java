@@ -1,6 +1,8 @@
 package guru.spring.sfgpetclinic.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -8,7 +10,13 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "owners")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Owner extends Person {
+
+    @Id
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "address")
     private String address;
