@@ -1,5 +1,7 @@
 package guru.spring.sfgpetclinic.services;
 
+import guru.spring.sfgpetclinic.models.Owner;
+
 import java.util.Set;
 
 public interface CrudService<T, K> {

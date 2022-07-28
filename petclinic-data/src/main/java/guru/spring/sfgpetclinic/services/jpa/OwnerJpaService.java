@@ -35,6 +35,21 @@ public class OwnerJpaService implements OwnerService {
     }
 
     @Override
+    public Owner update(Owner owner, Long id) {
+        Owner oldOwner = ownerRepository.findById(id).get();
+        if (oldOwner == null) {
+            oldOwner = new Owner(id, owner.getAddress(), owner. getCity(), owner.getTelephone(), owner.getPets());
+        } else {
+            oldOwner.setId(id);
+            oldOwner.setAddress(owner.getAddress());
+            oldOwner.setCity(owner.getCity());
+            oldOwner.setTelephone(owner.getTelephone());
+            oldOwner.setPets(owner.getPets());
+        }
+        return ownerRepository.save(oldOwner);
+    }
+
+    @Override
     public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
         ownerRepository.findAll().forEach(owners::add);

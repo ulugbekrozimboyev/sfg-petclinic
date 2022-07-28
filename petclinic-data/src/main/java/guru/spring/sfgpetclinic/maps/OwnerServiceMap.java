@@ -22,6 +22,11 @@ public class OwnerServiceMap extends AbstractMapServiec<Owner, Long> implements 
     }
 
     @Override
+    public Owner update(Owner object, Long id) {
+        return super.save(id, object);
+    }
+
+    @Override
     public Set<Owner> findAll() {
         return super.findAll();
     }
